@@ -23,8 +23,6 @@ zstyle -e ':completion:*' list-colors 'reply=${(s.:.)LS_COLORS}'
 
 # The prompt
 
-() {
-
 # Flags indicating status:
 # - am I root (red #, like bash's root-indicating prompt)
 local first_bit='%(#:%F{red}#%f :)'
@@ -59,5 +57,4 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED=" %F{green}?%f"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 ZSH_THEME_GIT_PROMPT_SUFFIX="]"
 
-}
 

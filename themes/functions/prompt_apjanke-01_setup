@@ -22,10 +22,6 @@ LS_COLORS="${LS_COLORS}:ln=00;04"
 # Make completion LS_COLORS consistent with main LS_COLORS
 zstyle -e ':completion:*' list-colors 'reply=${(s.:.)LS_COLORS}'
 
-# The prompt
-
-() {
-
 # Flags indicating status:
 # - was there an error (bright ✘)
 # - am I root (red #, like bash's root-indicating prompt)
@@ -61,5 +57,4 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED=" %F{green}?%f"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
 
-}
 

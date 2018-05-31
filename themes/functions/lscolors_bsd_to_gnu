@@ -1,34 +1,41 @@
-# Converts BSD-style LSCOLORS values to their GNU-style LS_COLORS equivalent
+#!/bin/zsh
+# lscolors_bsd_to_gnu
 #
-# BSD color codes are in the ls man page on BSD (including OS X).
+# Converts BSD-style LSCOLORS values to their GNU-style LS_COLORS equivalent.
+#
+#    out=$(lscolors_bsd_to_gnu <bsd_color_string>)
+#
+# Where <bsd_color_string> is a color specifier string in BSD $LSCOLORS format.
+# It will look like "gxfxdxdxdxexexdxdxgxgx"
+#
+# BSD color codes are in the ls man page on BSDs (including macOS).
 #
 # GNU color codes found at http://linux-sxs.org/housekeeping/lscolors.html
 # and http://leocharre.com/articles/setting-ls_colors-colors-of-directory-listings-in-bash-terminal/
 #
-# Note that in the Solarized colorscheme, the colors defined for "bright" ANSI colors
-# are not brighter or lighter versions of the regular color, but are used for various
-# extra shades of grey. That is an intentional behavior of Solarized, and not a bug with
-# this conversion code.
+# Note that in the Solarized colorscheme, the colors defined for 
+# "bright" ANSI colors are not brighter or lighter versions of the 
+# regular color, but are used for various extra shades of grey. So this
+# function won't work well with Solarized. That is an intentional design
+# choice Solarized's part, and not a bug with this conversion code.
 #
-# Usage:
-#
-#    omz_lscolors_bsd_to_gnu <bsd_color_string>
-#
-# Where <bsd_color_string> is a color specifier string in BSD $LSCOLORS format.
-# It will look like "gxfxdxdxdxexexdxdxgxgx"
+
 emulate -L zsh
 local bsd=$1
 local -a bsd_positions
 bsd_positions=( di ln so pi ex bd cd su sg tw ow)
 local -A fg_map
 local -A bg_map bg_map_bright
-# The BSD ls man page talks about "bold" standard ANSI colors, which the terminal may map to bright
-# colors, or draw in bold text.
-# The GNU LS definition has both a bold flag ("1") and bright variants of all the colors.
-# Experimentally, it looks like they really are using bold text, and the bold variants of
-# background colors have no effect. (Tested on OS X 10.9)
-# TODO: should maybe add a flag that allows mapping bold colors to bright colors instead
-# of bold text, in both fg and bg.
+
+# The BSD ls man page talks about "bold" standard ANSI colors, which the
+# terminal may map to bright colors, or draw in bold text.
+# The GNU LS definition has both a bold flag ("1") and bright variants of 
+# all the colors.
+# Experimentally, it looks like they really are using bold text, and the 
+# bold variants of background colors have no effect. (Tested on OS X 10.9)
+# TODO: should maybe add a flag that allows mapping bold colors to bright \
+# colors instead of bold text, in both fg and bg.
+
 fg_map=(
   x 0       # default
   a 8       # black

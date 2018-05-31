@@ -3,6 +3,8 @@ apjanke's zprezto-themes
 
 This is a module of Prezto modules and themes by [apjanke](https://github.com/apjanke).
 
+There is nothing useful in here yet! This is a work-in-progress that I'm putting together as I learn Prezto and decide whether to migrate to it from Oh My Zsh.
+
 # Installation
 
 Add this as a contrib module to your Prezto installation.

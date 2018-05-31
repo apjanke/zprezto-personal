@@ -1,8 +1,13 @@
+#!/bin/zsh
+#
+# lscolors_bsd_to_gnu_test
+#
 # Tests the color map using BSD and GNU ls
 # Assumes that on this system, `ls` is BSD ls and `gls` is GNU ls.
-# If your system is different, set $BSD_LS and/or $GNU_LS to the appropriate 
-# commands.
-function omz_lscolors_bsd_to_gnu_test() {
+# If your system is different, set $BSD_LS and/or $GNU_LS to the
+# appropriate commands.
+
+function lscolors_bsd_to_gnu_test() {
   local BSD_LS=${BSD_LS:=ls}
   local GNU_LS=${GNU_LS:=gls}
 
@@ -11,8 +16,9 @@ function omz_lscolors_bsd_to_gnu_test() {
     export LSCOLORS
     shift 1
   fi
-  local LS_COLORS=$(omz_lscolors_bsd_to_gnu $LSCOLORS)
+  local LS_COLORS=$(lscolors_bsd_to_gnu $LSCOLORS)
   export LS_COLORS
+
   print "BSD ls: $LSCOLORS"
   print
   $BSD_LS $@
