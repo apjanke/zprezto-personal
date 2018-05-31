@@ -1,0 +1,24 @@
+# Tests the color map using BSD and GNU ls
+# Assumes that on this system, `ls` is BSD ls and `gls` is GNU ls.
+# If your system is different, set $BSD_LS and/or $GNU_LS to the appropriate 
+# commands.
+function omz_lscolors_bsd_to_gnu_test() {
+  local BSD_LS=${BSD_LS:=ls}
+  local GNU_LS=${GNU_LS:=gls}
+
+  if [[ -n $1 ]]; then
+    local LSCOLORS=$1
+    export LSCOLORS
+    shift 1
+  fi
+  local LS_COLORS=$(omz_lscolors_bsd_to_gnu $LSCOLORS)
+  export LS_COLORS
+  print "BSD ls: $LSCOLORS"
+  print
+  $BSD_LS $@
+  print
+  print "GNU ls: $LS_COLORS"
+  print
+  $GNU_LS --color $@
+  print
+}
