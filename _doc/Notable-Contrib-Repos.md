@@ -11,6 +11,7 @@ These are just repos I've found while looking around GitHub. I don't necessarily
 * [belak/prezto-contrib](https://github.com/belak/prezto-contrib) – The official (I think) central Prezto contrib repo. WIP.
 * [amfranz/prezto-modules](https://github.com/amfranz/prezto-modules) – AWS, hub, wd, and tmuxp modules
 * [longkey1/prezto-symfony-module](https://github.com/longkey1/prezto-symfony-module) – Symfony support
+* [Cronos87/prezto-modules](https://github.com/Cronos87/prezto-modules) – Laravel and Symfony2
 
 ##  Single-module repos
 
