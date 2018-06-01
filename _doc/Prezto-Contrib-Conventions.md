@@ -11,7 +11,7 @@ Contrib support in Prezto is new as of late 2017. You can read about it in [this
 
 Prefer big repos and small modules. Each contrib repo takes effort to install and manage, so it's better to have few of them. And each module has a cost in terms of startup time and shell namespace consumption, as well as code reading & understanding, so it's better to split them into small modules so you can enable only what you actually need.
 
-Create a GitHub repo named `zprezto-<topic>`, where `<topic>` is what your modules deal with. I just throw all my Prezto stuff into a single `zprezto-personal` repo.
+Create a GitHub repo named `zprezto-<topic>`, where `<topic>` is what your modules deal with. I just throw all my Prezto stuff into a single `zprezto-personal` repo. Label your repo with the "prezto", "zsh", and possibly "zsh-theme" and "prezto-prompt" topics (on the GitHub repo page).
 
 Put each module into a directory under the top level of your contrib repo. (Don't make the repo a single module.) Add a `README.md` and a `LICENSE.md` file. Prefer the MIT License so it uses the same license as Prezto itself.
 
