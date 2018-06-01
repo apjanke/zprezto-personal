@@ -21,6 +21,8 @@ Directories in the repo that start with underscores are special directories and 
 
 Collect all your prompt themes in a single module. Add a `README.md` for the module that lists all the themes, and includes a screenshot or two of each.
 
+_HMMM_: Actually, maybe don't include screenshots. My `~/.zprezto` directory is 53 MB now, and it's mainly theme screenshots. Maybe there should be a separate doco repo for theme repos.
+
 Choose distinctive names for your themes. The prompt theme namespace is global; it's not qualified by the module that provides them. Don't name your theme `clean` or `minimal`. If you're John Q. Citizen, name it `clean-jqc`. Or name it `OwlBearDen` or `ferrari-double-spoiler`.
 
 ##  Local ~/.zprezto organization
@@ -41,12 +43,12 @@ TOPIC=personal
 cd ~/.zprezto
 mkdir -p contrib/${USER}
 cd contrib/${USER}
-git clone https://github.com/${USER}/zprezto-${TOPIC} ${TOPIC}
+git clone --recursive https://github.com/${USER}/zprezto-${TOPIC} ${TOPIC}
 # Install the official contrib repo
 cd ../..
 mkdir -p contrib/belak
 cd contrib/belak
-git clone https://github.com/belak/prezto-contrib contrib
+git clone --recursive https://github.com/belak/prezto-contrib contrib
 ```
 
 Then add the `$USER/$TOPIC/<modulename>` and `belak/contrib/<modulename>` modules to your pmodules list in your `~/.zpreztorc`.
