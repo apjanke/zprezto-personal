@@ -25,3 +25,4 @@ These are just repos I've found while looking around GitHub. I don't necessarily
 * [cdonohue/prezto-clean-prompt](https://github.com/cdonohue/prezto-clean-prompt) – "Clean" theme
 * [kami-zh/prezto-prompt-simple](https://github.com/kami-zh/prezto-prompt-simple) – "Simple" theme
 * [turboMaCk/prezto-Prague-Shell](https://github.com/turboMaCk/prezto-Prague-Shell) – "Prague Shell" theme
+* [nixolas1/prezto-lambda](https://github.com/nixolas1/prezto-lambda) – "Lambda" theme
