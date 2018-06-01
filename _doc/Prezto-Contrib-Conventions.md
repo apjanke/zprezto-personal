@@ -5,6 +5,7 @@ These are my conventions for managing third-party "contrib" code for Prezto.
 
 This isn't an official Prezto convention. It's just something I came up with while figuring out how I was going to use it. But I think it will work well, especially if you use code from multiple authors.
 
+Contrib support in Prezto is new as of late 2017. You can read about it in [this Prezto PR](https://github.com/sorin-ionescu/prezto/pull/1458).
 
 ##  Repo organization
 

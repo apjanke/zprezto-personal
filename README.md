@@ -1,7 +1,7 @@
 apjanke's zprezto-personal
 ==========================
 
-This is a module of Prezto contrib modules and themes by [apjanke](https://github.com/apjanke).
+This is a module of Prezto [contrib](https://github.com/sorin-ionescu/prezto/pull/1458) modules and themes by [apjanke](https://github.com/apjanke).
 
 There is nothing useful in here yet! This is a work-in-progress that I'm putting together as I learn Prezto and decide whether to migrate to it from Oh My Zsh.
 
@@ -51,5 +51,6 @@ A more compact one-line version of apjanke-01.
 
 #  More doco
 
+* Prezto's [PR for Contrib support](https://github.com/sorin-ionescu/prezto/pull/1458)
 * My [Prezto Contrib repo organization conventions](_doc/Prezto-Contrib-Conventions.md)
 * [Notable Prezto Contrib Repos](_doc/Notable-Contrib-Repos.md)
