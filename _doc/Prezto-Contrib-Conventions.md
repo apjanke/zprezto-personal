@@ -1,5 +1,5 @@
-Prezto Contrib Conventions
-=============================
+apjanke's Prezto Contrib Conventions
+====================================
 
 These are my conventions for managing third-party "contrib" code for Prezto.
 
