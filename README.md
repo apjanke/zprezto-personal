@@ -38,7 +38,7 @@ zstyle ':prezto:module:prompt' theme 'apjanke-01'
 
 # Modules
 
-##  test1
+##  [test1](test1/README.md)
 
 This is a trivial module that just prints out the fact that it was loaded. It's a way of testing my contrib repo organization conventions.
 
