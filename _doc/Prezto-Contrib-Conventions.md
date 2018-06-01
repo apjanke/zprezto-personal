@@ -33,6 +33,10 @@ Using GitHub usernames as the first level of directories provides a namespace me
 
 Clone your contrib repo under that directory, using a local directory name that removes the leading `zprezto-` prefix.
 
+If your contrib repo that's a fork of someone else's contrib repo, clone your fork, and then add an `upstream` remote to the canonical parent with `git remote add upstream https://github.com/${THATUSER}/zprezto-$TOPIC`.
+
+Repeat the process for each contrib repo that you want to use.
+
 I also like to keep my main `.zprezto` directory itself in Dropbox, and just symlink `~/.zprezto` to it, so it can be shared between different computers and I only have to manage one copy.
 
 ###  Example
@@ -44,14 +48,22 @@ cd ~/.zprezto
 mkdir -p contrib/${USER}
 cd contrib/${USER}
 git clone --recursive https://github.com/${USER}/zprezto-${TOPIC} ${TOPIC}
+
 # Install the official contrib repo
 cd ../..
 mkdir -p contrib/belak
 cd contrib/belak
 git clone --recursive https://github.com/belak/prezto-contrib contrib
+
+# Install a forked contrib repo
+cd ../..
+cd apjanke
+git clone --recursive https://github.com/apjanke/prezto-symfony-module symfony-module
+cd symfony-module
+git remote add upstream https://github.com/longkey1/prezto-symfony-module
 ```
 
-Then add the `$USER/$TOPIC/<modulename>` and `belak/contrib/<modulename>` modules to your pmodules list in your `~/.zpreztorc`.
+Then add the `$USER/$TOPIC/<topicname>` and `belak/contrib/contrib-<topicname>` modules to your pmodules list in your `~/.zpreztorc`.
 
 ##  Notes
 
