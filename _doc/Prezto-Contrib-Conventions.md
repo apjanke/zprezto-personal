@@ -17,9 +17,17 @@ Put each module into a directory under the top level of your contrib repo. (Don'
 
 Directories in the repo that start with underscores are special directories and are not modules. This includes stuff like `_doc`.
 
+###  Prompt themes
+
+Collect all your prompt themes in a single module. Add a `README.md` for the module that lists all the themes, and includes a screenshot or two of each.
+
+Choose distinctive names for your themes. The prompt theme namespace is global; it's not qualified by the module that provides them. Don't name your theme `clean` or `minimal`. If you're John Q. Citizen, name it `clean-jqc`. Or name it `OwlBearDen` or `ferrari-double-spoiler`.
+
 ##  Installation
 
-Create the `~/.zprezto/contrib` directory if it doesn't already exist. Create a `$USER` directory under it, where `$USER` is your GitHub username. Don't call it "mine" or "local" or "personal" or anything like that; use a globally unique name that's associated with your repos.
+Create the `~/.zprezto/contrib` directory if it doesn't already exist. Create a `$USER` directory under it, where `$USER` is your GitHub username. Don't call it "mine" or "local" or "personal" or anything like that; use a globally unique name that's associated with your repos. GitHub usernames meet that criteria.
+
+Using GitHub usernames as the first level of directories provides a namespace mechanism that prevents module names from colliding. And it offloads the work of managing the global namespace to an outside authority that's already doing that work.
 
 Clone your contrib repo under that directory, using a local directory name that removes the leading `zprezto-` prefix.
 
@@ -34,12 +42,19 @@ cd ~/.zprezto
 mkdir -p contrib/${USER}
 cd contrib/${USER}
 git clone https://github.com/${USER}/zprezto-${TOPIC} ${TOPIC}
+# Install the official contrib repo
+cd ../..
+mkdir -p contrib/belak
+cd contrib/belak
+git clone https://github.com/belak/prezto-contrib contrib
 ```
 
-Then add the `$USER/$TOPIC/<modulename>` modules to your pmodules list in your `~/.zpreztorc`.
+Then add the `$USER/$TOPIC/<modulename>` and `belak/contrib/<modulename>` modules to your pmodules list in your `~/.zpreztorc`.
 
 ##  Notes
 
 If this organization seems familiar to you, that's no coincidence. It's based on Mac Homebrew's [Tap mechanism](https://docs.brew.sh/Taps), which I like.
 
 Make sure to check in and push your local changes to GitHub often, especially if you're keeping your repo in Dropbox. Dropbox seems to screw up Git repos sometimes.
+
+See my [Notable Contrib Repos](Notable-Contrib-Repos.md) list for other Prezto contrib repos of interest.
