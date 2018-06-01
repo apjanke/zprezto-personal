@@ -1,7 +1,7 @@
-apjanke's zprezto-themes
+apjanke's zprezto-personal
 ==========================
 
-This is a module of Prezto modules and themes by [apjanke](https://github.com/apjanke).
+This is a module of Prezto contrib modules and themes by [apjanke](https://github.com/apjanke).
 
 There is nothing useful in here yet! This is a work-in-progress that I'm putting together as I learn Prezto and decide whether to migrate to it from Oh My Zsh.
 
@@ -13,7 +13,7 @@ Add this as a contrib module to your Prezto installation.
 cd ~/.zprezto
 mkdir -p contrib/apjanke
 cd contrib/apjanke
-git clone https://github.com/apjanke/zprezto-personal
+git clone https://github.com/apjanke/zprezto-personal personal
 ```
 
 And then load it in your `~/.zpreztorc`, and select one of the themes from it.
@@ -47,3 +47,9 @@ A port of my Oh My Zsh theme inspired by "My Extravagant Zsh Prompt" and Agnoste
 ##  apjanke-02
 
 A more compact one-line version of apjanke-01.
+
+
+#  More doco
+
+* My [Prezto Contrib repo organization conventions](_doc/Prezto-Contrib-Conventions.md)
+* [Notable Prezto Contrib Repos](_doc/Notable-Contrib-Repos.md)
