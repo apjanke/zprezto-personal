@@ -23,7 +23,7 @@ Collect all your prompt themes in a single module. Add a `README.md` for the mod
 
 Choose distinctive names for your themes. The prompt theme namespace is global; it's not qualified by the module that provides them. Don't name your theme `clean` or `minimal`. If you're John Q. Citizen, name it `clean-jqc`. Or name it `OwlBearDen` or `ferrari-double-spoiler`.
 
-##  Installation
+##  Local ~/.zprezto organization
 
 Create the `~/.zprezto/contrib` directory if it doesn't already exist. Create a `$USER` directory under it, where `$USER` is your GitHub username. Don't call it "mine" or "local" or "personal" or anything like that; use a globally unique name that's associated with your repos. GitHub usernames meet that criteria.
 
