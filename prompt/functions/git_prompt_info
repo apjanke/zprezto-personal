@@ -1,0 +1,5 @@
+#!/bin/zsh
+#
+# Dummy git prompt info
+
+echo "Hello, world!"

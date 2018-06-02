@@ -1,60 +1,94 @@
 #!/bin/zsh
+#
 # apjanke-01 Andrew Janke's main zsh theme
 #
-# Author: Andrew Janke <andrew@apjanke.net>
+#  Authors: 
+#    Andrew Janke <andrew@apjanke.net>
 
+# WORK IN PROGRESS
+#
+# This is an Oh My Zsh theme that is being ported over to 
+# Prezto. It is currently still broken. Sorry!
+#
+# NOTES
+#
 # This theme is intended for use and tested with the Solarized color scheme for iTerm2,
 # and especially the solarized-dark theme. It may be ugly otherwise.
 #
 # Inspirations: 
-# * "My Extravagant Zsh Prompt"
-# * The "agnoster" oh-my-zsh theme (https://gist.github.com/agnoster/3712874)
 #
-# TODO: Replace "$(...)" capturing subshell calls with regular function calls
-# that use shared variables, to improve performance, especially on Windows.
+#  * Steve Losh's "My Extravagant Zsh Prompt" 
+#     (http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/)
+#  * The "agnoster" zsh theme (https://github.com/agnoster/agnoster-zsh-theme)
 
-# Calm ls colors without bold directories or red executables
-# This is designed for a light-on-dark theme
-export LSCOLORS="gxxxdxdxdxexexdxdxgxgx"
-export LS_COLORS=$(lscolors_bsd_to_gnu $LSCOLORS)
-# GNU-specific extras
-LS_COLORS="${LS_COLORS}:ln=00;04"
-# Make completion LS_COLORS consistent with main LS_COLORS
-zstyle -e ':completion:*' list-colors 'reply=${(s.:.)LS_COLORS}'
+# Load dependencies.
+#pmodload 'helper'
 
-# Flags indicating status:
-# - was there an error (bright ✘)
-# - am I root (red #, like bash's root-indicating prompt)
-local first_bit='%(?::%F{yellow}✘%f )%(#:%F{red}#%f :)'
-# User info, abbreviating default case
-if [[ "$USER" == $ZSH_DEFAULT_USER ]]; then
-  if [[ -n "$SSH_CLIENT" ]]; then
-    # Default user on remote host: just "@host"
-    first_bit+="%F{blue}@%m%f "
+
+function prompt_apjanke-01_setup {
+  # Calm ls colors without bold directories or red executables
+  # This is designed for a light-on-dark theme
+  export LSCOLORS="gxxxdxdxdxexexdxdxgxgx"
+  export LS_COLORS=$(lscolors_bsd_to_gnu $LSCOLORS)
+  # GNU-specific extras
+  LS_COLORS="${LS_COLORS}:ln=00;04"
+  # Make completion LS_COLORS consistent with main LS_COLORS
+  zstyle -e ':completion:*' list-colors 'reply=${(s.:.)LS_COLORS}'
+
+  # Flags indicating status:
+  # - was there an error (bright ✘)
+  # - am I root (red #, like bash's root-indicating prompt)
+  local first_bit='%(?::%F{yellow}✘%f )%(#:%F{red}#%f :)'
+  # User info, abbreviating default case
+  if [[ "$USER" == $ZSH_DEFAULT_USER ]]; then
+    if [[ -n "$SSH_CLIENT" ]]; then
+      # Default user on remote host: just "@host"
+      first_bit+="%F{blue}@%m%f "
+    fi
+    # Default user on local host: show nothing
+  else
+    # Otherwise, "user@host"
+    first_bit+="%F{blue}%n@%m%f "
   fi
-  # Default user on local host: show nothing
-else
-  # Otherwise, "user@host"
-  first_bit+="%F{blue}%n@%m%f "
-fi
-first_bit+='%F{cyan}%~%f'
-local line2=''
+  first_bit+='%F{cyan}%~%f'
+  local line2=''
 
-if [[ $OSTYPE == cygwin ]]; then
-  # Skip git info on Windows because it is too slow
-  PROMPT="[$first_bit]
+  if [[ $OSTYPE == cygwin ]]; then
+    # Skip git info on Windows because it is too slow
+    PROMPT="[$first_bit]\n
 $line2\$ "
-else
-  PROMPT="[$first_bit\$(git_prompt_info)]
+  else
+    PROMPT="[$first_bit \$(git_prompt_info)]
 $line2\$ "
-fi
+  fi
 
-# VCS indicator styling for OMZ
-ZSH_THEME_GIT_PROMPT_PREFIX=" on ⇄ "
-ZSH_THEME_GIT_PROMPT_DIRTY=" %F{green}±%f"
-ZSH_THEME_GIT_PROMPT_TIMEDOUT=" %F{yellow}?%f"
-ZSH_THEME_GIT_PROMPT_UNTRACKED=" %F{green}?%f"
-ZSH_THEME_GIT_PROMPT_CLEAN=""
-ZSH_THEME_GIT_PROMPT_SUFFIX=""
+  # VCS indicator styling for OMZ
+  ZSH_THEME_GIT_PROMPT_PREFIX=" on ⇄ "
+  ZSH_THEME_GIT_PROMPT_DIRTY=" %F{green}±%f"
+  ZSH_THEME_GIT_PROMPT_TIMEDOUT=" %F{yellow}?%f"
+  ZSH_THEME_GIT_PROMPT_UNTRACKED=" %F{green}?%f"
+  ZSH_THEME_GIT_PROMPT_CLEAN=""
+  ZSH_THEME_GIT_PROMPT_SUFFIX=""
 
+  # Set git-info parameters.
+  # (Copied from theme "sorin")
+  zstyle ':prezto:module:git:info' verbose 'yes'
+  zstyle ':prezto:module:git:info:action' format '%F{7}:%f%%B%F{9}%s%f%%b'
+  zstyle ':prezto:module:git:info:added' format ' %%B%F{2}✚%f%%b'
+  zstyle ':prezto:module:git:info:ahead' format ' %%B%F{13}⬆%f%%b'
+  zstyle ':prezto:module:git:info:behind' format ' %%B%F{13}⬇%f%%b'
+  zstyle ':prezto:module:git:info:branch' format ' %%B%F{2}%b%f%%b'
+  zstyle ':prezto:module:git:info:commit' format ' %%B%F{3}%.7c%f%%b'
+  zstyle ':prezto:module:git:info:deleted' format ' %%B%F{1}✖%f%%b'
+  zstyle ':prezto:module:git:info:modified' format ' %%B%F{4}✱%f%%b'
+  zstyle ':prezto:module:git:info:position' format ' %%B%F{13}%p%f%%b'
+  zstyle ':prezto:module:git:info:renamed' format ' %%B%F{5}➜%f%%b'
+  zstyle ':prezto:module:git:info:stashed' format ' %%B%F{6}✭%f%%b'
+  zstyle ':prezto:module:git:info:unmerged' format ' %%B%F{3}═%f%%b'
+  zstyle ':prezto:module:git:info:untracked' format ' %%B%F{7}◼%f%%b'
+  zstyle ':prezto:module:git:info:keys' format \
+    'status' '%b %p %c:%s%A%B%S%a%d%m%r%U%u'
+
+
+}
 
